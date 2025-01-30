@@ -1,0 +1,47 @@
+# Environment variables
+.env
+
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+*.exe
+*.exe~
+*.dll
+*.dylib
+
+# Go specific
+*.test
+*.out
+/vendor/
+/bin/
+/dist/
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Binary file
+main
+cms-server
+
+# Log files
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Air live reload
+tmp/
+.air.toml
+
+# Go workspace file
+go.work
