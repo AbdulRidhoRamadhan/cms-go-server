@@ -45,7 +45,7 @@ This showcases my ability to adapt to new technologies, work with modern DevOps 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/abdulridhoramadhan/CMS-Go-Project.git
+   https://github.com/AbdulRidhoRamadhan/cms-go-server.git
    ```
 
 2. Create a `.env` file:
