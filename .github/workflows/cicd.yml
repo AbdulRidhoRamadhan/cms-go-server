@@ -88,4 +88,4 @@ jobs:
             -e CLOUDINARY_URL=${{ secrets.CLOUDINARY_URL }} \
             -e ADMIN_DEFAULT_PASSWORD=${{ secrets.ADMIN_DEFAULT_PASSWORD }} \
             -e CORS_ORIGINS=${{ secrets.CORS_ORIGINS }} \
-            abdulridhoramadhan/go-app:latest
+            ${{ secrets.DOCKER_USERNAME }}/go-app:latest
