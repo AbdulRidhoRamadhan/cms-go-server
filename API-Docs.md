@@ -2,7 +2,7 @@
 
 ## Base URL
 
-`http://localhost:4040`
+`http://localhost:80`
 
 ## Endpoints
 

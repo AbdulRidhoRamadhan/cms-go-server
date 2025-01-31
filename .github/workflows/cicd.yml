@@ -77,7 +77,7 @@ jobs:
           docker run -d \
             --name go-app-container \
             --network app-network \
-            -p 4040:4040 \
+            -p 80:80 \
             -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
             -e PORT=${{ secrets.PORT }} \
             -e DB_HOST=postgres-container \

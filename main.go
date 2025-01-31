@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/abdulridhoramadhan/CMS-Go-Project/cms-server/internal/config"
 	"github.com/abdulridhoramadhan/CMS-Go-Project/cms-server/internal/database"
@@ -73,7 +74,10 @@ func main() {
 		protected.PUT("/categories/:id", middleware.Authorization(db), categoryHandler.UpdateCategory)
 	}
 
-	port := fmt.Sprintf(":%s", cfg.Port)
+	port := ":80"
+	if os.Getenv("PORT") != "" {
+		port = fmt.Sprintf(":%s", os.Getenv("PORT"))
+	}
 	log.Printf("Server running on port %s", port)
 	r.Run(port)
 }

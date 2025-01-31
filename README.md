@@ -52,7 +52,7 @@ This showcases my ability to adapt to new technologies, work with modern DevOps 
 
    ```env
    JWT_SECRET=your_jwt_secret
-   PORT=4040
+   PORT=80
    DB_HOST=localhost
    DB_PORT=5432
    DB_USER=your_db_user
