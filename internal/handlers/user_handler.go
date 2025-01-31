@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"regexp"
 	"strings"
 
 	"github.com/abdulridhoramadhan/CMS-Go-Project/cms-server/internal/models"
@@ -13,6 +14,8 @@ import (
 	"gorm.io/gorm"
 )
 
+const emailRegex = `^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$`
+
 type UserHandler struct {
 	db *gorm.DB
 }
@@ -20,7 +23,6 @@ type UserHandler struct {
 func NewUserHandler(db *gorm.DB) *UserHandler {
 	return &UserHandler{db: db}
 }
-
 
 func (h *UserHandler) Register(c *gin.Context) {
 	var registerRequest struct {
@@ -37,7 +39,6 @@ func (h *UserHandler) Register(c *gin.Context) {
 		return
 	}
 
-	
 	if registerRequest.Username == "" {
 		c.Error(fmt.Errorf("USERNAME_REQUIRED"))
 		return
@@ -48,12 +49,16 @@ func (h *UserHandler) Register(c *gin.Context) {
 		return
 	}
 
+	if !regexp.MustCompile(emailRegex).MatchString(registerRequest.Email) {
+		c.Error(fmt.Errorf("INVALID_EMAIL_FORMAT"))
+		return
+	}
+
 	if registerRequest.Password == "" {
 		c.Error(fmt.Errorf("PASS_REQUIRED"))
 		return
 	}
 
-	
 	if len(registerRequest.Password) < 5 {
 		c.Error(fmt.Errorf("PASSWORD_LENGTH"))
 		return
@@ -84,7 +89,6 @@ func (h *UserHandler) Register(c *gin.Context) {
 		return
 	}
 
-	
 	c.JSON(http.StatusCreated, gin.H{
 		"id":          user.ID,
 		"username":    user.Username,
@@ -94,7 +98,6 @@ func (h *UserHandler) Register(c *gin.Context) {
 		"role":        user.Role,
 	})
 }
-
 
 func (h *UserHandler) Login(c *gin.Context) {
 	var loginData struct {
@@ -110,6 +113,11 @@ func (h *UserHandler) Login(c *gin.Context) {
 
 	if loginData.Email == "" {
 		c.Error(fmt.Errorf("EMAIL_REQUIRED"))
+		return
+	}
+
+	if !regexp.MustCompile(emailRegex).MatchString(loginData.Email) {
+		c.Error(fmt.Errorf("INVALID_EMAIL_FORMAT"))
 		return
 	}
 
@@ -134,14 +142,12 @@ func (h *UserHandler) Login(c *gin.Context) {
 		return
 	}
 
-	
 	token, err := jwt.GenerateToken(user.ID, user.Email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to generate token"})
 		return
 	}
 
-	
 	c.JSON(http.StatusOK, gin.H{
 		"access_token": token,
 		"role":        user.Role,

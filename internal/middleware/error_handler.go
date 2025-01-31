@@ -80,6 +80,9 @@ func ErrorHandler() gin.HandlerFunc {
 			case "INVALID_IMAGE_TYPE":
 				status = http.StatusBadRequest
 				message = "Invalid image type. Supported types: JPEG, PNG, GIF, WEBP"
+			case "INVALID_EMAIL_FORMAT":
+				status = http.StatusBadRequest
+				message = "Enter the correct email type"
 			default:
 				status = http.StatusInternalServerError
 				message = "Internal Server Error"
