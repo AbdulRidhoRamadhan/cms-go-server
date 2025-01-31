@@ -509,3 +509,4 @@ All error responses follow the same format:
 - `CATEGORY_REQUIRED`: Category is required.
 - `IMAGE_REQUIRED`: Product image is required.
 - `INVALID_IMAGE_TYPE`: Invalid image type. Supported types: JPEG, PNG, GIF, WEBP.
+- `INVALID_EMAIL_FORMAT`: Enter the correct email type
