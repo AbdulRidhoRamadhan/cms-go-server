@@ -155,3 +155,16 @@ func (h *PublicHandler) GetProductByID(c *gin.Context) {
 		"productById": formattedProduct,
 	})
 }
+
+func (h *PublicHandler) GetAllCategories(c *gin.Context) {
+	var categories []models.Category
+	
+	if err := h.db.Preload("Author", func(db *gorm.DB) *gorm.DB {
+		return db.Select("id, username, email, role, phone_number, address, created_at, updated_at")
+	}).Find(&categories).Error; err != nil {
+		c.Error(fmt.Errorf("INTERNAL_SERVER_ERROR"))
+		return
+	}
+
+	c.JSON(http.StatusOK, categories)
+}

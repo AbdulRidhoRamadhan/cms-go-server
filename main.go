@@ -51,6 +51,7 @@ func main() {
 	r.POST("/users/login", userHandler.Login)
 	r.GET("/pub", publicHandler.GetAllProducts)
 	r.GET("/pub/:id", publicHandler.GetProductByID)
+	r.GET("/pub/categories", publicHandler.GetAllCategories)
 
 	protected := r.Group("/")
 	protected.Use(middleware.Authentication())
