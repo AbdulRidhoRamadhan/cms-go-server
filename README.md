@@ -33,6 +33,17 @@ This showcases my ability to adapt to new technologies, work with modern DevOps 
 - **Containerization**: Docker
 - **CI/CD**: GitHub Actions
 
+## Live Demo Credentials
+
+Untuk mencoba live demo dari Content Management System (CMS) ini, Anda dapat menggunakan credentials berikut:
+
+- **Email:** demo@mail.com
+- **Password:** demo123
+
+Silakan gunakan informasi di atas untuk login dan eksplorasi fitur yang tersedia.
+
+**Catatan:** Akun dengan peran admin memiliki akses penuh ke semua fitur dan pengaturan sistem, namun demi keamanan, credentials untuk akun admin tidak disertakan dalam demo ini.
+
 ## Prerequisites
 
 - Go 1.22+
